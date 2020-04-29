@@ -1,5 +1,7 @@
 ## Objective
 
+Capture files were obtained from: https://wiki.wireshark.org/SampleCaptures
+
 ## Create DynamoDB table.
 
 ## Check DynamoDB table
