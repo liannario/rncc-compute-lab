@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 import datetime
+import json
 import os
 
-UPDATED_FILENAME = '/tmp/updated.txt'
+UPDATED_FILENAME = '/var/www/html/flaskapp/data/updated.txt'
 
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -25,8 +26,14 @@ def index():
 
 @app.route('/update', methods=['POST'])
 def update():
-    with open('/tmp/updated.txt', 'wt') as f:
-        f.write('Updated on %s UTC' % str(datetime.datetime.utcnow()))
+
+    header_value = request.headers.get('x-amz-sns-message-type')
+    if header_value is not None and header_value == 'SubscriptionConfirmation':
+        with open('/var/www/html/flaskapp/data/sns_token.txt', 'wt') as f:
+            f.write('Token = %s' % json.loads(request.data)['Token'])
+    else:
+        with open(UPDATED_FILENAME, 'wt') as f:
+            f.write('Updated on %s UTC' % str(datetime.datetime.utcnow()))
     return '', 204
 
 if __name__ == '__main__':
