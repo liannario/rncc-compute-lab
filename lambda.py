@@ -46,7 +46,7 @@ def generate_table(packets):
             row = {
                 'src': packet[IP].src,
                 'dst': packet[IP].dst,
-                'len': packet[IP].len if IP in packet else -1,
+                'len': packet[IP].len if hasattr(packet[IP], 'len') else -1,
                 'proto': 'ip'
             }
             table.append(row)
@@ -55,7 +55,7 @@ def generate_table(packets):
             row = {
                 'src': packet[Ether].src,
                 'dst': packet[Ether].dst,
-                'len': packet[Ether].len if Ether in packet else -1,
+                'len': packet[Ether].len if hasattr(packet[Ether], 'len') else -1,
                 'proto': 'ether'
             }
             table.append(row)
