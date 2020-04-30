@@ -267,10 +267,38 @@ This will open a dialog that prompts you to create or choose an existing key pai
 ![ec2_8](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_8.PNG "")
  
 Repeat the above procedure for a second EC2 instance that sits in the second private subnet.
+**Note**: The second time you go through the procedure, instead of creating a new key pair in the last step, just select **webserver** from the key pair list, and check the _I acknowledge..._ box.
 
-## Create ELB (Elastic Load Balancer)
+## Configure ELB.
+
+We now need to configure the target group you created in the Networking part of this lab, so that the load balancer can redirect traffic to the instance we just created.
+
+Find the _Target Groups_ menu item in the sidebar on your left, and click on it.
+
+![elb_tg_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/elb_tg_1.PNG "")
+
+If not already selected, select the _myTargetGroup_ target group by checking the box next to it. If you have multiple target groups, make sure this is the only one selected.
+
+![elb_tg_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/elb_tg_2.PNG "")
+
+Click on the _Targets_ tab in the section at the bottom of the screen.
+
+![elb_tg_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/elb_tg_3.PNG "")
+
+Click on the _Edit_ button to edit the targets to which the ELB will route the traffic.
+
+![elb_tg_4](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/elb_tg_4.PNG "")
+
+A dialog will appear. Check both instances you just created, and click the _Add to registered_ button on top of them.
+
+![elb_tg_5](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/elb_tg_5.PNG "")
+
+This is how it should like after you added them to the target group. You can now safely click on the _Save_ button.
+![elb_tg_6](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/elb_tg_6.PNG "")
 
 ## Check website
+
+
 
 ## Create SNS subscription
 
