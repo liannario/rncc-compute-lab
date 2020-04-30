@@ -298,7 +298,21 @@ This is how it should like after you added them to the target group. You can now
 
 ## Check website
 
+Let's check whether the EC2 instances are running and serving the application that has been installed on them. Still in the EC2 console, look for and click on the _Load Balancers_ menu item on the sidebar to the left.
 
+![cw_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cw_1.PNG "")
+
+Make sure that the ELB you created in the previous section of this lab is selected. If there is more than one load balancer, make sure only **MyLoadBalancer** is checked. You also have to make sure it is active before you continue.
+
+![cw_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cw_2.PNG "")
+
+Find the _DNS name_ in the _Description_ tab in the section below, and copy the DNS name of the LB.
+
+![cw_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cw_3.PNG "")
+
+Enter the URL into a new browser tab. This is how it shoud look like:
+
+![cw_4](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cw_4.PNG "")
 
 ## Create SNS subscription
 
