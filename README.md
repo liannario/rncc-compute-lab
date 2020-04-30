@@ -5,7 +5,11 @@
 
 ## Objective
 
-Capture files were obtained from: https://wiki.wireshark.org/SampleCaptures
+The objective of this lab is to help you understand how to model and implement event-driven architectures on AWS. Additionally, it should help you understand the basics of:
+
+ * Load balancing in AWS using ELB and EC2 instances.
+ * Creating and querying a DynamoDB table.
+ * Reusing code in Lambda functions by placing it in a Lambda layer.
 
 ## Initialize your environment
 
@@ -418,3 +422,7 @@ By now, you should have gained more insight on:
  * How to place EC2 instances behind a load balancer.
  * How to reuse code in Lambda functions by placing it into a Lambda layer.
  * How to create and query a DynamoDB table from the console.
+
+## Data source
+
+Capture files were obtained from: https://wiki.wireshark.org/SampleCaptures
