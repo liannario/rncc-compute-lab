@@ -86,7 +86,7 @@ You will now be presented with a screen like the one below. Note that the number
 
 ## Create SNS topic
 
-At the _Services menu_, type in **SNS** in the search bar, and click on the _Simple Notification Service_ service link.
+On the _Services menu_, type in **SNS** in the search bar, and click on the _Simple Notification Service_ service link.
 
 ![sns_0](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_topic_0.PNG "")
 
@@ -102,8 +102,28 @@ You have created an SNS topic, which we will be using later on in this tutorial.
 
 ## Create Lambda layer
 
-<p align="center">
-</p>
+On the _Services menu_, type in **Lambda** in the search bar, and click on the _Lambda_ service link.
+
+![lambda_0](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_0.PNG "")
+
+On the sidebar on your left, click on the _Layers_ menu item.
+
+![lambda_layers_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_layers_1.PNG "")
+
+Then, click on the _Create layer_ at the top right corner of the screen.
+
+![lambda_layers_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_layers_2.PNG "")
+
+You will be taken to the Create layer screen. Since we're creating a layer for Scapy to be available to a number of Lambda functions, we will name it accordingly:
+
+ * Type **ScapyLayer** into the _Name_ field.
+ * Select _Upload a file from Amazon S3_.
+ * In the _Amazon S3 link URL_ text field, enter the URL to the file within the bucket that was created for you. It is **s3://ripe-ncc-compute-lab-012345678901/scapy_layer.zip**, where 012345678901 is the account ID that you wrote down during the first steps.
+ * From the _Compatible runtimes - optional_ dropdown, choose **Python 3.8**.
+
+Once you are done, click on the _Create_ button at the bottom right corner.
+
+![lambda_layers_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_layers_3.PNG "")
 
 ## Create Lambda function
 
