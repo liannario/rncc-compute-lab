@@ -212,6 +212,62 @@ Then, click on the _Save_ button at the bottom right corner.
 
 ## Create EC2 instances
 
+Once again, on the _Services_ menu, enter **EC2** in the search bar, and click on the EC2 service link.
+
+![ec2_0](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_0.PNG "")
+
+Click on the _Instances_ menu item on the sidebar on the left.
+
+![ec2_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_1.PNG "")
+
+Click on the _Launch Instance_ button at the top center portion of the screen.
+
+![ec2_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_2.PNG "")
+
+Select the **Amazon Linux 2 AMI** from the list, by clicking on the _Select_ button next to it.
+
+![ec2_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_3.PNG "")
+
+Check the **t2.micro** instance to select it, then click on _Next: Configure Instance Details_ button at the bottom right corner of the screen.
+
+![ec2_4](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_4.PNG "")
+
+Now we'll configure some of the instance details.
+
+ * Select the VPC you created in the previous module, **YourVPCName**, from the _Network_ dropdown.
+ * Select one of the private subnets you created from the _Subnet_ dropdown.
+ * Go back to your Cloud9 environment tab, and copy the contents of the **userdata.sh** file in the **flaskapp** directory. Then, paste the contents of this file into the _User data_ text area at the bottom of the screen.
+ * Click on _Next: Add Storage_
+ 
+![ec2_5](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_5.PNG "")
+
+This is how your **userdata.sh** contents should look like:
+
+![ec2_6](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_6.PNG "")
+
+Leave the storage settings as they are.
+
+![ec2_6b](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_6b.PNG "")
+
+Click on _Next: Add Tags_
+
+Click on _Next: Configure Security Group_
+
+Click on _Select an existing security group_, check the **WebServerSG** from the list, and move on to the next screen by clicking the _Review and launch_ button at the bottom right corner of the screen.
+
+![ec2_7](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_7.PNG "")
+
+Click on the _Launch_ button at the bottom right corner of the screen.
+
+This will open a dialog that prompts you to create or choose an existing key pair.
+ * Choose _Create a new key pair_, and enter **webserver** into the _Key pair name_ text field.
+ * Click on the _Download Key Pair_ button to download the private key. You will use this private key in a moment.
+ * Click on _Launch Instances_.
+ 
+![ec2_8](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/ec2_8.PNG "")
+ 
+Repeat the above procedure for a second EC2 instance that sits in the second private subnet.
+
 ## Create ELB (Elastic Load Balancer)
 
 ## Check website
