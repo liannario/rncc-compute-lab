@@ -54,16 +54,35 @@ bash initialize.sh
 ```
 Write down the account ID that the script prints to the terminal. _This is important and will be used in a later step._
 
+![cloud9_accountid](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cloud9_account_id.PNG "")
 
 ## Create DynamoDB table.
 
-<p align="center">
-</p>
+From the _Services_ menu, choose _DynamoDB_ and click it.
 
-## Check DynamoDB table
+![dynamo_0](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/dynamo_create_0.PNG "")
 
-<p align="center">
-</p>
+At the main DynamoDB screen, click on the _Create table_ button at the center.
+
+![dynamo_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/dynamo_create_1.PNG "")
+
+Now you need to give the table a name and configure its settings.
+ * Enter **PacketCaptures** into the _Table name_ field.
+ * For the partition key, enter **s3Id** into the _Primary key_ field and leave _String_ as the type of the field.
+
+We will use the default settings for this demo, so go ahead and click on the _Create_ button at the bottom right corner of the screen.
+
+![dynamo_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/dynamo_create_2.PNG "")
+
+You will be taken to the main table screen, where you will be presented with an overview of the table and a series of tabs to access the different features in a table. For now, we are just interested in making sure the table is empty.
+
+Click on the _Items_ tab at the center top portion of the screen.
+
+![dynamo_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/dynamo_create_3.PNG "")
+
+You will now be presented with a screen like the one below. Note that the number of total items is zero, and that there are no items whatsoever listed below.
+
+![dynamo_4](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/dynamo_create_4.PNG "")
 
 ## Create SNS topic
 
