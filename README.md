@@ -368,4 +368,53 @@ When the confirmation dialog pops up, enter the token you have just retrieved fr
 
 ## Upload file
 
+In the search box on the _Services_ menu, enter _S3_ and then click on the _S3_ service link.
+
+![s3_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/s3_1.PNG "")
+
+Find the bucket that has been created for you (starting with **ripe-ncc-compute-lab**) and click on its name.
+
+![s3_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/s3_2.PNG "")
+
+Click on the _Upload_ button to upload a sample file. You can use any of the provided **.cap** files in the _captures_ directory in this repository.
+
+![s3_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/s3_3.PNG "")
+
+Click on the _Add files_ button to add files to the upload list.
+
+![s3_4](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/s3_4.PNG "")
+
+Now click on the _Upload_ button to start the upload process.
+
+![s3_5](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/s3_5.PNG "")
+
+Within a few seconds, refresh the contents of the bucket by using the refresh _icon_ on the right side of the screen. You should see a _csv_ prefix created. You can click this, and you will see one or more CSV files (depending on how many capture files you uploaded). These contain part of the contents of the capture files dumped as a CSV file.
+
+![s3_6](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/s3_6.PNG "")
+
 ## Check DynamoDB table and website again
+
+From the _Services_ menu, choose _DynamoDB_ and click it.
+
+![dynamo_0](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/dynamo_create_0.PNG "")
+
+Now, click on the sidebar to your left on the _Tables_ item, and then choose the _Items_ tab at the right of the screen. You will now see that the data in the capture file has also been uploaded to DynamoDB.
+
+![dynamo_data](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/dynamo_data.PNG "")
+
+Finally, take a look at the website using the DNS name of the ELB as the URL.
+
+For every file processed, an SNS notification has been sent to the endpoint living in the two EC2 instances. Depending on the instance to which the load balancer decided to route the traffic, you may encounter that one of the instances has changed state, while the other has not.
+
+If the instance received the notification, you will see the following:
+
+![website_updated](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/website_updated.PNG "")
+
+## Congratulations! You have made it to the end of this lab.
+
+By now, you should have gained more insight on:
+ * How event-driven architectures can be implemented using Lambda, SNS and events.
+ * How to create EC2 instances from scratch and initialize them using user data.
+ * How to place EC2 instances behind a load balancer.
+ * How to reuse code in Lambda functions by placing it into a Lambda layer.
+ * How to create and query a DynamoDB table from the console.
