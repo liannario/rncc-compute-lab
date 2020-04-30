@@ -21,7 +21,7 @@ Click on the _Create environment_ button on the right side of the page.
 
 Now, enter the name of your Cloud9 environment: **MyCloud9Environment** in the _Name_ field, and click on _Next step_.
 
-![cloud9_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cloud9_create_2.PNG "")
+![cloud9_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cloud9_create_2.PNG "")
 
 Leave the choices as default, since we want:
  * A new instance for the environment running on EC2.
@@ -30,11 +30,11 @@ Leave the choices as default, since we want:
 
 Then, click on _Next step_.
 
-![cloud9_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cloud9_create_3.PNG "")
+![cloud9_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cloud9_create_3.PNG "")
 
 Review the information and click on _Create environment_.
 
-![cloud9_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cloud9_create_4.PNG "")
+![cloud9_4](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/cloud9_create_4.PNG "")
 
 ### 2. Within the Cloud9 instance that you just created obtain a copy of this repository.
 
@@ -86,8 +86,19 @@ You will now be presented with a screen like the one below. Note that the number
 
 ## Create SNS topic
 
-<p align="center">
-</p>
+At the _Services menu_, type in **SNS** in the search bar, and click on the _Simple Notification Service_ service link.
+
+![sns_0](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_topic_0.PNG "")
+
+Enter the **PacketCaptureProcessorTopic** in the _Topic name_ field, and click on the _Next step_ button below.
+
+![sns_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_topic_1.PNG "")
+
+We will not be filling in any optional data, so you can safely click on the _Create topic_ button at the lower right corner of the screen.
+
+![sns_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_topic_2.PNG "")
+
+You have created an SNS topic, which we will be using later on in this tutorial. Let's move on to creating our Lambda function.
 
 ## Create Lambda layer
 
