@@ -13,5 +13,5 @@ deactivate
 cd ..
 cp -R flaskapp /var/www/html
 mkdir /var/www/html/flaskapp/data
-chown 0777 /var/www/html/flaskapp/data
+chmod 0777 /var/www/html/flaskapp/data
 service httpd start
