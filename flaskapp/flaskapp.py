@@ -4,6 +4,7 @@ import json
 import os
 
 UPDATED_FILENAME = '/var/www/html/flaskapp/data/updated.txt'
+TOKEN_FILENAME = '/var/www/html/flaskapp/data/sns_token.txt'
 
 from flask import Flask, request
 
@@ -29,12 +30,23 @@ def update():
 
     header_value = request.headers.get('x-amz-sns-message-type')
     if header_value is not None and header_value == 'SubscriptionConfirmation':
-        with open('/var/www/html/flaskapp/data/sns_token.txt', 'wt') as f:
+        with open(TOKEN_FILENAME, 'wt') as f:
             f.write('Token = %s' % json.loads(request.data)['Token'])
     else:
         with open(UPDATED_FILENAME, 'wt') as f:
             f.write('Updated on %s UTC' % str(datetime.datetime.utcnow()))
     return '', 204
+
+@app.route('/get_token', methods=['GET'])
+def get_token():
+    if os.path.exists(TOKEN_FILENAME):
+        with open(TOKEN_FILENAME, 'r') as f:
+            token = f.read()
+    else:
+        token = 'Not on this server.'
+    
+    html = '<html><head><title>Token</title></head><body>SNS token: %s</body></html>' % token
+    return html
 
 if __name__ == '__main__':
     app.run()
