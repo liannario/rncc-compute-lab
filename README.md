@@ -193,6 +193,23 @@ Then, click on the _Save_ button at the top right corner of the screen.
 
 ### Add event to SNS
 
+We will now add the SNS topic we created as a destination for an event whenever the Lambda function finishes with a success condition.
+
+Click on the _Add destination_ button in the _Designer_ section.
+
+![lambda_sns_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_sns_1.PNG "")
+
+Now set up the destination as follows.
+
+ * From _Source_ choose _Asynchronous invocation_.
+ * Then, from _Condition_, choose _On success_.
+ * From the _Destination type_ dropdown, choose _SNS topic_.
+ * And from the _Destination_ dropdown, choose the **PacketCaptureProcessorTopic** that you previously created.
+ 
+Then, click on the _Save_ button at the bottom right corner.
+
+![lambda_sns_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_sns_2.PNG "")
+
 ## Create EC2 instances
 
 ## Create ELB (Elastic Load Balancer)
