@@ -316,7 +316,55 @@ Enter the URL into a new browser tab. This is how it shoud look like:
 
 ## Create SNS subscription
 
+On the _Services menu_, type in **SNS** in the search bar, and click on the _Simple Notification Service_ service link.
+
+![sns_0](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_topic_0.PNG "")
+
+Click the _Subscriptions_ item on the sidebar to your left.
+
+![sns_sub_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_1.PNG "")
+
+Now click on the _Create subscription_ button.
+
+![sns_sub_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_2.PNG "")
+
+Now we need to fill out the details of the subscription we want to create:
+
+ * Click the _Topic ARN_ field and choose the ARN that pops up, that belongs to the topic you created some steps ago, **PacketCaptureProcessorTopic**.
+ * From the _Protocol_ dropdown, select **HTTP**.
+ * In the endpoint text field, enter: **http://|DNS-name-of-your-ELB|/update**, where |DNS-name-of-your-ELB| is the DNS name you used to check the website above.
+
+Click on the _Create subscription_ button.
+
+![sns_sub_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_3.PNG "")
+
+You will be taken to this screen. We need to go to the list of subscriptions. Click on the _Subscription_ item on the sidebar to the left.
+
+![sns_sub_4](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_4.PNG "")
+
+From the list, select the subscription you jusut created, and click on the _Request confirmation_ button above.
+
+![sns_sub_5](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_5.PNG "")
+
+Now we just need to verify this subscription for SNS to be able to start sending events to it.
+
 ## Verify SNS subscription
+
+We are very close to seeing the whole workflow in action! We need to get hold of the token that was sent to this endpoint to do the verification.
+
+You can retrieve this token by calling the **http://|DNS-name-of-your-ELB|/get-token** endpoint from your browser. Since the token has been sent only once so far, only one of the servers behind your load balancer will have it. If you see a message that says «_Not on this server_», then keep refreshing until you get the token. It should look like this:
+
+![sns_sub_5b](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_5b.PNG "")
+
+Back to the SNS console, still in the Subscriptions screen, click on the _Confirm subscription_.
+
+![sns_sub_5](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_5.PNG "")
+
+When the confirmation dialog pops up, enter the token you have just retrieved from the **get-token** endpoint, and click on the  _Confirm subscription_.
+
+![sns_sub_6](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_6.PNG "")
+
+**Note**: If, by accident, you submitted the verification token more than once, you can try refreshing until one of the tokens you receive works. There can be, at most, two tokens.
 
 ## Upload file
 
