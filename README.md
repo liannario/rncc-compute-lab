@@ -127,7 +127,69 @@ Once you are done, click on the _Create_ button at the bottom right corner.
 
 ## Create Lambda function
 
+Now we will move on to creating the actual Lambda function that will process the cap/pcap files uploaded into the S3 bucket.
+
+From the sidebar on your left, click on _Functions_.
+
+![lambda_functions_1](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_1.PNG "")
+
+Then, click on the _Create function_ button at the top right corner.
+
+![lambda_functions_2](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_2.PNG "")
+
+Leaving the _Author from scratch_ option that is selected by default, enter the lambda function settings:
+
+ * Into the _Function name_ text field, enter **PacketCaptureProcessorFunction**. This will be the name of our Lambda function.
+ * From the _Runtime_ dropdown, choose **Python 3.8**.
+ * Click on _Choose or create an execution role_ to reveal more options.
+ * From the _Execution role_ radio button set, choose _Use an existing role_.
+ * From the _Existing role_ dropdown, choose **Cloud9-myLambdaRole**.
+ 
+Now you are ready to create the function. Click on the _Create function_ button at the bottom right corner of the screen.
+
+![lambda_functions_3](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_3.PNG "")
+
+Now, click on the _Layers_ block in the _Designer_ section.
+
+![lambda_functions_4](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_4.PNG "")
+
+Click on _Add a layer_ button in the _Layers_ section below.
+
+![lambda_functions_5](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_5.PNG "")
+
+From the _Name_ dropdown, choose **ScapyLayer**. And from the _Version_ dropdown, choose **1**.
+
+Click on the _Add_ button to continue.
+
+![lambda_functions_6](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_6.PNG "")
+
 ### Add S3 trigger
+
+Now we will be adding an S3 trigger, so that every time a **.cap** file is uploaded to our bucket, the lambda function is invoked.
+
+Click on the _Add trigger_ button in the _Designer_ section.
+
+![lambda_functions_7](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_7.PNG "")
+
+From the _Trigger configuration_ dropdown, select _S3_. Then, from the _Bucket_ dropdown, select your bucket. _Remember your bucket starts with_ **ripe-ncc-compute-lab-** _followed by your account ID_.
+
+Leave **All object create events** in the _Event type_ dropdown, and enter **.cap** into the _Suffix_ text field.
+
+Then, click on the _Add_ button at the bottom right corner of the screen.
+
+![lambda_functions_8a](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_8a.PNG "")
+
+### Add code to Lambda
+
+Go back to your Cloud9 editor, open the **lambda.py** file and copy the contents to the clipboard.
+
+![lambda_functions_8b](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_8b.PNG "")
+
+Now, go back to your Lambda tab. Click on the _PacketCaptureProcessorFunction_ block in the _Designer_ section, and paste the code into the _lambda_function.py_ tab in the _Function code_ section.
+
+Then, click on the _Save_ button at the top right corner of the screen.
+
+![lambda_functions_9](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/lambda_functions_9.PNG "")
 
 ### Add event to SNS
 
