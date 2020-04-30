@@ -6,6 +6,7 @@ S3_BUCKET_PREFIX="ripe-ncc-compute-lab"
 
 ACCOUNTID=`aws sts get-caller-identity \
     | python -c "import json; import sys; print(json.load(sys.stdin)['Account'])"`
+echo "Initializing account ID $ACCOUNTID"
 
 echo "Creating role $ROLE_NAME"
 ROLE_ARN=`aws iam create-role \
