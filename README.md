@@ -10,6 +10,21 @@ The objective of this lab is to help you understand how to model and implement e
  * Load balancing in AWS using ELB and EC2 instances.
  * Creating and querying a DynamoDB table.
  * Reusing code in Lambda functions by placing it in a Lambda layer.
+ 
+## Architecture diagram
+
+In this lab, you will be creating a Lambda function that processes data uploaded to S3 and notifies a series of services.
+
+The workflow is as follows:
+ * Objects uploaded to the lab S3 bucket that have a _.cap_ suffix will trigger the execution of the **PacketCaptureProcessorFunction**. 
+ * The **PacketCaptureProcessorFunction**, in turn, reads the _.cap_ file, extracts source, destination, length and protocol of the packet, and:
+   * Stores the data as a CSV in the same bucket of origin with the _csv/_ prefix.
+   * Stores the data in DynamoDB using the compound _bucket/key_ name as partition key.
+   * If successful, sends an event to an SNS topic that signals the Lambda function run successfully.
+ * Upon receiving the event, SNS will send the event to all of its subscribers.
+   * In this case, there is a single subscriber, which is an HTTP endpoint sitting behind an ELB in two EC2 instances.
+
+![arch_diagram](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/architecture_diagram.PNG "")
 
 ## Initialize your environment
 
