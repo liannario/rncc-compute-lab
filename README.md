@@ -371,7 +371,7 @@ Now we just need to verify this subscription for SNS to be able to start sending
 
 We are very close to seeing the whole workflow in action! We need to get hold of the token that was sent to this endpoint to do the verification.
 
-You can retrieve this token by calling the **http://|DNS-name-of-your-ELB|/get-token** endpoint from your browser. Since the token has been sent only once so far, only one of the servers behind your load balancer will have it. If you see a message that says «_Not on this server_», then keep refreshing until you get the token. It should look like this:
+You can retrieve this token by calling the **http://|DNS-name-of-your-ELB|/get_token** endpoint from your browser. Since the token has been sent only once so far, only one of the servers behind your load balancer will have it. If you see a message that says «_Not on this server_», then keep refreshing until you get the token. It should look like this:
 
 ![sns_sub_5b](https://github.com/pnpolcher/rncc-compute-lab/raw/master/img/sns_sub_5b.PNG "")
 
